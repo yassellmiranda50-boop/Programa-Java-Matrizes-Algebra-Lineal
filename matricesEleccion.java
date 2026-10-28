@@ -20,6 +20,7 @@ public class matricesEleccion {
             1. Factorizacion LxU.
             2. Transformaciones elementales.
             """);
+        //Creo que te falta el scanner para recibir los datos
     }
 
     static String devolverMatriz(){

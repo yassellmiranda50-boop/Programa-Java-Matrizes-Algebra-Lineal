@@ -1,30 +1,42 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class matricesEleccion {
+
     // Version base hecha por Yassell:
     static Scanner leer = new Scanner(System.in);
+    static double[][] matrizPrincipal = new double[3][3];
 
     public static void main(String[] args) {
         elecciones();
+        System.out.println(devolverMatriz());
     }
 
     static void elecciones() {
         System.out.println("""
-                    BIENVENIDO AL PROGRAMA DE MATRICES.
-                    Seleccione una de las opciones disponibles:
-                    1.
-                    2.
-                """);
-        int opcion = leer.nextInt();
+            Bienvenido al programa sobre nuestro último trabajo en algebra lineal.
 
-        switch (opcion) {
-            case 1:
-                break;
-            case 2:
-                break;
-            default:
-                
-        }
+            Ingrese el número de la opción que desea realizar:
+            1. Factorizacion LxU.
+            2. Transformaciones elementales.
+            """);
     }
-    //Final de la base. XD
+
+    static String devolverMatriz(){
+        for(int i = 0; i < matrizPrincipal.length; i++){
+            for(int j = 0; j < matrizPrincipal[i].length; j++){
+                System.out.println("Ingrese el valor en la posición: " + (i+1) + ", " + (j+1));
+                matrizPrincipal[i][j] = leer.nextDouble();
+            }
+        }
+
+        String matriz = "";
+        for (double[] matrizP : matrizPrincipal) {
+            matriz += Arrays.toString(matrizP) + "\n";
+        }
+
+        return matriz;
+    }
+    // Final de la base.
+
 }

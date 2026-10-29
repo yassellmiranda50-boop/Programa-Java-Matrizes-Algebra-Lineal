@@ -7,6 +7,7 @@ public class matricesEleccion {
 
     public static void main(String[] args) {
         int eleccion;
+        double[][] matrizPrincipal = null;
 
         do {
             eleccion = seleccion();

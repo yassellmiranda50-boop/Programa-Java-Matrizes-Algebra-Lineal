@@ -25,7 +25,7 @@ public class matricesEleccion {
                     System.out.println("Saliendo del programa...");
                 }
                 default -> {
-                    System.out.println("Error en ingreso del dato solicitado, intentelo nuevamente");
+                    System.out.println("Error en ingreso del dato solicitado, intentelo nuevamente\n");
                 }
             }
         } while (eleccion != 3);
@@ -40,9 +40,12 @@ public class matricesEleccion {
             2. Transformaciones elementales.
             3. Salir del programa.
             """);
-        int opcion = leer.nextInt();
-
-        return opcion;
+        
+            try {
+        return Integer.parseInt(leer.nextLine().trim());
+    } catch (NumberFormatException e) {
+        return -1; // valor inválido: cae en el default del switch
+    }
     }
 
     static double[][] ingresarMatriz() {
@@ -51,7 +54,12 @@ public class matricesEleccion {
         for (int i = 0; i < matrizIngresada.length; i++) {
             for (int j = 0; j < matrizIngresada[i].length; j++) {
                 System.out.println("Ingrese el valor en la posición: " + (i + 1) + ", " + (j + 1));
-                matrizIngresada[i][j] = leer.nextDouble();
+                try {
+                    matrizIngresada[i][j] = Double.parseDouble(leer.nextLine().trim());
+                } catch (NumberFormatException e) {
+                    System.out.println("Error en ingreso del dato solicitado, intentelo nuevamente\n");
+                    j--; // Reintentar la misma posición
+                }
             }
         }
 

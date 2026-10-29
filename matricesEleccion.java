@@ -7,18 +7,15 @@ public class matricesEleccion {
 
     public static void main(String[] args) {
         int eleccion;
-        double[][] matrizPrincipal = null;
 
         do {
             eleccion = seleccion();
             switch (eleccion) {
                 case 1 -> {
-                    matrizPrincipal = ingresarMatriz();
-                    //factorizacionLU(matrizPrincipal); Elijan el nombre que deseen, siempre con sentido si
+                    ingresarMatriz();
                 }
                 case 2 -> {
-                    matrizPrincipal = ingresarMatriz();
-                    //transformacionesElementales(matrizPrincipal); Elijan el nombre que deseen, siempre con sentido si
+                    transformaciones_elementales.iniciar(leer);
                 }
                 case 3 -> {
                     System.out.println("Saliendo del programa...");

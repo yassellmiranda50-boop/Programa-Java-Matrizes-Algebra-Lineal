@@ -1,42 +1,60 @@
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class matricesEleccion {
 
     // Version base hecha por Yassell:
     static Scanner leer = new Scanner(System.in);
-    static double[][] matrizPrincipal = new double[3][3];
 
     public static void main(String[] args) {
-        elecciones();
-        System.out.println(devolverMatriz());
+        int eleccion;
+        double[][] matrizPrincipal = null;
+
+        do {
+            eleccion = seleccion();
+            switch (eleccion) {
+                case 1 -> {
+                    matrizPrincipal = ingresarMatriz();
+                    //factorizacionLU(matrizPrincipal); Elijan el nombre que deseen, siempre con sentido si
+                }
+                case 2 -> {
+                    matrizPrincipal = ingresarMatriz();
+                    //transformacionesElementales(matrizPrincipal); Elijan el nombre que deseen, siempre con sentido si
+                }
+                case 3 -> {
+                    System.out.println("Saliendo del programa...");
+                }
+                default -> {
+                    System.out.println("Error en ingreso del dato solicitado, intentelo nuevamente");
+                }
+            }
+        } while (eleccion != 3);
     }
 
-    static void elecciones() {
+    static int seleccion() {
         System.out.println("""
             Bienvenido al programa sobre nuestro último trabajo en algebra lineal.
 
             Ingrese el número de la opción que desea realizar:
             1. Factorizacion LxU.
             2. Transformaciones elementales.
+            3. Salir del programa.
             """);
-        //Creo que te falta el scanner para recibir los datos
+        int opcion = leer.nextInt();
+
+        return opcion;
     }
 
-    static String devolverMatriz(){
-        for(int i = 0; i < matrizPrincipal.length; i++){
-            for(int j = 0; j < matrizPrincipal[i].length; j++){
-                System.out.println("Ingrese el valor en la posición: " + (i+1) + ", " + (j+1));
-                matrizPrincipal[i][j] = leer.nextDouble();
+    static double[][] ingresarMatriz() {
+        double[][] matrizIngresada = new double[3][3];
+
+        for (int i = 0; i < matrizIngresada.length; i++) {
+            for (int j = 0; j < matrizIngresada[i].length; j++) {
+                System.out.println("Ingrese el valor en la posición: " + (i + 1) + ", " + (j + 1));
+                matrizIngresada[i][j] = leer.nextDouble();
             }
         }
 
-        String matriz = "";
-        for (double[] matrizP : matrizPrincipal) {
-            matriz += Arrays.toString(matrizP) + "\n";
-        }
-
-        return matriz;
+        return matrizIngresada;
     }
     // Final de la base.
 

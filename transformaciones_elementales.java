@@ -19,7 +19,7 @@ public class transformaciones_elementales {
                 case 1 -> procesar_matriz("Matriz escalonada superior", 1);
                 case 2 -> procesar_matriz("Matriz escalonada inferior", 2);
                 case 3 -> procesar_matriz("Matriz identidad", 3);
-                case 4 -> System.out.println("Saliendo del programa...");
+                case 4 -> System.out.println("Saliendo del programa de transformaciones elementales...");
                 default -> System.out.println("Opción inválida. Inténtelo nuevamente.");
             }
         } while (eleccion != 4);

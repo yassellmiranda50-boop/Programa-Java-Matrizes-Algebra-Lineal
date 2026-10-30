@@ -14,6 +14,7 @@ public class matricesEleccion {
             switch (eleccion) {
                 case 1 -> {
                     matrizPrincipal = ingresarMatriz();
+                    ejecutarFactorizacionLU(matrizPrincipal); // Llamada a la función de factorización LU
                     //factorizacionLU(matrizPrincipal); Elijan el nombre que deseen, siempre con sentido si
                 }
                 case 2 -> {

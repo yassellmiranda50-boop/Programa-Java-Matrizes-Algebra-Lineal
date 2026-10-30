@@ -1,3 +1,4 @@
+
 import java.util.Scanner;
 
 public class transformaciones_elementales {
@@ -16,11 +17,16 @@ public class transformaciones_elementales {
         do {
             eleccion = seleccion();
             switch (eleccion) {
-                case 1 -> procesar_matriz("Matriz escalonada superior", 1);
-                case 2 -> procesar_matriz("Matriz escalonada inferior", 2);
-                case 3 -> procesar_matriz("Matriz identidad", 3);
-                case 4 -> System.out.println("Saliendo del programa de transformaciones elementales...");
-                default -> System.out.println("Opción inválida. Inténtelo nuevamente.");
+                case 1 ->
+                    procesar_matriz("Matriz escalonada superior", 1);
+                case 2 ->
+                    procesar_matriz("Matriz escalonada inferior", 2);
+                case 3 ->
+                    procesar_matriz("Matriz identidad", 3);
+                case 4 ->
+                    System.out.println("\nVOLVIENDO AL MENÚ PRINCIPAL...");
+                default ->
+                    System.out.println("Opción inválida. Inténtelo nuevamente.");
             }
         } while (eleccion != 4);
     }
@@ -30,10 +36,14 @@ public class transformaciones_elementales {
         double[][] resultado;
 
         switch (tipo) {
-            case 1 -> resultado = matriz_superior(matriz);
-            case 2 -> resultado = matriz_inferior(matriz);
-            case 3 -> resultado = matriz_identidad(matriz);
-            default -> throw new IllegalArgumentException("Tipo de transformación desconocido.");
+            case 1 ->
+                resultado = matriz_superior(matriz);
+            case 2 ->
+                resultado = matriz_inferior(matriz);
+            case 3 ->
+                resultado = matriz_identidad(matriz);
+            default ->
+                throw new IllegalArgumentException("Tipo de transformación desconocido.");
         }
 
         if (resultado == null) {
@@ -47,19 +57,19 @@ public class transformaciones_elementales {
 
     private static int seleccion() {
         System.out.println("""
+            \n---------------------------------------------
                 Seleccione el resultado que desea obtener:
 
                 1. Matriz escalonada superior
                 2. Matriz escalonada inferior
                 3. Matriz identidad
-                4. Salir
-                """);
+                4. Volver al menú principal.""");
         return leerEntero();
     }
 
     private static double[][] ingresarMatriz() {
         double[][] matriz = new double[3][3];
-        System.out.println("Ingrese los valores de la matriz 3x3:");
+        System.out.println("\nIngrese los valores de la matriz 3x3:");
 
         for (int i = 0; i < matriz.length; i++) {
             for (int j = 0; j < matriz[i].length; j++) {
@@ -188,10 +198,10 @@ public class transformaciones_elementales {
     }
 
     private static void limpiarCeros(double[][] matriz) {
-        for (int i = 0; i < matriz.length; i++) {
-            for (int j = 0; j < matriz[i].length; j++) {
-                if (Math.abs(matriz[i][j]) < EPSILON) {
-                    matriz[i][j] = 0;
+        for(double[] matriz1 : matriz) {
+            for (int j = 0; j < matriz1.length; j++) {
+                if (Math.abs(matriz1[j]) < EPSILON) {
+                    matriz1[j] = 0;
                 }
             }
         }
@@ -207,18 +217,24 @@ public class transformaciones_elementales {
     }
 
     private static int leerEntero() {
-        while (!sc.hasNextInt()) {
-            System.out.println("Ingrese un número entero válido.");
-            sc.next();
+        while (true) {
+            String entrada = sc.nextLine().trim();
+            try {
+                return Integer.parseInt(entrada);
+            } catch (NumberFormatException e) {
+                System.out.println("Ingrese un número entero válido.");
+            }
         }
-        return sc.nextInt();
     }
 
     private static double leerDouble() {
-        while (!sc.hasNextDouble()) {
-            System.out.println("Ingrese un número válido.");
-            sc.next();
+        while (true) {
+            String entrada = sc.nextLine().trim();
+            try {
+                return Double.parseDouble(entrada);
+            } catch (NumberFormatException e) {
+                System.out.println("Ingrese un número válido.");
+            }
         }
-        return sc.nextDouble();
     }
 }
